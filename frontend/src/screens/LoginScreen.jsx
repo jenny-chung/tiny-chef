@@ -7,10 +7,13 @@ import { useLoginMutation } from '../slices/usersApiSlice';
 import { setCredentials } from '../slices/authSlice';
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const LoginScreen = () => {
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setPasswordVisibility] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -21,7 +24,7 @@ const LoginScreen = () => {
 
     useEffect(() => {
         if (userInfo) {
-            navigate('/');
+            navigate('/recipes');
         }
     }, [navigate, userInfo]);
 
@@ -36,6 +39,10 @@ const LoginScreen = () => {
             toast.error(error?.data?.message || error.error);
         }
     };
+
+    const togglePasswordVisibility = () => {
+       setPasswordVisibility(showPassword ? false : true);
+    }
 
     return (
         <FormContainer>
@@ -53,14 +60,16 @@ const LoginScreen = () => {
                 <Form.Group className='my-2' controlId='password'>
                     <Form.Label>Password:</Form.Label>
                     <Form.Control
-                        type='password'
+                        type={showPassword ? 'text' : 'password'}
                         placeholder='Enter your password'
                         value={password}
                         onChange={ (e) => setPassword(e.target.value) }>
+                    
                     </Form.Control>
+                    <i onClick={togglePasswordVisibility}>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
                 </Form.Group>
 
-            { isLoading && <Loader />}
+            { isLoading && <Loader /> && toast.dismiss() }
             
             <Button type='submit' variant='primary' className='mt-3'>
                 Login
