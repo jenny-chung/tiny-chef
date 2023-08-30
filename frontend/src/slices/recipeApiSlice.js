@@ -8,6 +8,8 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
                 url: `${RECIPES_URL}`,
                 method: 'GET',
             })
+            // query: () => `${RECIPES_URL}`,
+            // providesTags: ['Recipe']
         }),
         addRecipe: builder.mutation({
             query: (recipe) => ({
@@ -18,15 +20,14 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
             })
         }),
         deleteRecipe: builder.mutation({
-            query: (data) => ({
-                url: `${USERS_URL}/delete`,
-                method: 'POST',
-                body: data
+            query: (id) => ({
+                url: `${RECIPES_URL}/${id}`,
+                method: 'DELETE',
             })
         }),
         updateRecipe: builder.mutation({
             query: (data) => ({
-                url: `${USERS_URL}/profile`,
+                url: `${RECIPES_URL}/${id}`,
                 method: 'PUT',
                 body: data
             })
