@@ -14,7 +14,7 @@ const RecipeForm = () => {
         ingredients: [],
         steps: '',
         imageUrl: '',
-        time: 0,
+        timeRequired: 0,
     });
 
     const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const RecipeForm = () => {
         setRecipe({...recipe, ingredients: [...recipe.ingredients, '']});
     }
 
-    // console.log(recipe);
+    console.log(recipe);
 
 
     return (
@@ -100,10 +100,10 @@ const RecipeForm = () => {
                 <Form.Label>Time required (minutes):</Form.Label>
                 <Form.Control
                     type='number'
-                    name='time'
+                    name='timeRequired'
                     min={0}
                     placeholder='Enter recipe time (minutes)'
-                    value={recipe.time}
+                    value={recipe.timeRequired}
                     onChange={handleChange}>
                 </Form.Control>
             </Form.Group>
