@@ -7,3 +7,11 @@ i:hover {
     color: #92a8eb;
     cursor: pointer;
 }
+
+.registerPwd {
+    top: 300px;
+}
+
+.registerConfirmPwd {
+    top: 380px;
+}

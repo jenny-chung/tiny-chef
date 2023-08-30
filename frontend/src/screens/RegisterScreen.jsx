@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
-import { FaUser } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import FormContainer from '../components/FormContainer';
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
@@ -15,6 +15,8 @@ const RegisterScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [showPassword, setPasswordVisibility] = useState(false);
+    const [showConfirmPassword, setConfirmPasswordVisibility] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -33,7 +35,9 @@ const RegisterScreen = () => {
         e.preventDefault();
 
         if (password !== confirmPassword) {
-            toast.error('Passwords do not match.');
+            toast.error('Passwords do not match.', {
+                theme: "colored"
+              });
         } else {
             try {
                 const res = await register({ name, email, password }).unwrap();
@@ -44,8 +48,11 @@ const RegisterScreen = () => {
                 toast.error(error?.data?.message || error.error);
             }
         }
-
     };
+
+    const togglePasswordVisibility = (flag, fn) => {
+        flag ? fn(false) : fn(true);
+    }
 
     return (
         <FormContainer>
@@ -72,20 +79,22 @@ const RegisterScreen = () => {
                 <Form.Group className='my-2' controlId='password'>
                     <Form.Label>Password:* </Form.Label>
                     <Form.Control
-                        type='password'
+                        type={showPassword ? 'text' : 'password'}
                         placeholder='Enter your password'
                         value={password}
                         onChange={ (e) => setPassword(e.target.value) }>
                     </Form.Control>
+                    <i className='registerPwd' onClick={() => togglePasswordVisibility(showPassword, setPasswordVisibility)}>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
                 </Form.Group>
                 <Form.Group className='my-2' controlId='confirmPassword'>
                     <Form.Label>Confirm password:*</Form.Label>
                     <Form.Control
-                        type='password'
+                        type={showConfirmPassword ? 'text' : 'password'}
                         placeholder='Confirm your password'
                         value={confirmPassword}
                         onChange={ (e) => setConfirmPassword(e.target.value) }>
                     </Form.Control>
+                    <i className='registerConfirmPwd' onClick={() => togglePasswordVisibility(showConfirmPassword, setConfirmPasswordVisibility)}>{showConfirmPassword ? <FaEyeSlash /> : <FaEye />}</i>
                 </Form.Group>
 
             { isLoading && <Loader /> && toast.dismiss() }
