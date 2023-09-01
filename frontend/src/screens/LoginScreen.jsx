@@ -66,7 +66,7 @@ const LoginScreen = () => {
                         onChange={ (e) => setPassword(e.target.value) }>
                     
                     </Form.Control>
-                    <i onClick={togglePasswordVisibility}>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
+                    <i title={showPassword ? 'Hide password' : 'Show password'} onClick={togglePasswordVisibility}>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
                 </Form.Group>
 
             { isLoading && <Loader /> && toast.dismiss() }

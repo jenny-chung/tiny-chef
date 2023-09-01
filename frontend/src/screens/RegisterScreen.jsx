@@ -84,7 +84,7 @@ const RegisterScreen = () => {
                         value={password}
                         onChange={ (e) => setPassword(e.target.value) }>
                     </Form.Control>
-                    <i className='registerPwd' onClick={() => togglePasswordVisibility(showPassword, setPasswordVisibility)}>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
+                    <i className='registerPwd' title={showPassword ? 'Hide password' : 'Show password'} onClick={() => togglePasswordVisibility(showPassword, setPasswordVisibility)}>{showPassword ? <FaEyeSlash /> : <FaEye />}</i>
                 </Form.Group>
                 <Form.Group className='my-2' controlId='confirmPassword'>
                     <Form.Label>Confirm password:*</Form.Label>
@@ -94,7 +94,7 @@ const RegisterScreen = () => {
                         value={confirmPassword}
                         onChange={ (e) => setConfirmPassword(e.target.value) }>
                     </Form.Control>
-                    <i className='registerConfirmPwd' onClick={() => togglePasswordVisibility(showConfirmPassword, setConfirmPasswordVisibility)}>{showConfirmPassword ? <FaEyeSlash /> : <FaEye />}</i>
+                    <i className='registerConfirmPwd' title={showPassword ? 'Hide password' : 'Show password'} onClick={() => togglePasswordVisibility(showConfirmPassword, setConfirmPasswordVisibility)}>{showConfirmPassword ? <FaEyeSlash /> : <FaEye />}</i>
                 </Form.Group>
 
             { isLoading && <Loader /> && toast.dismiss() }
