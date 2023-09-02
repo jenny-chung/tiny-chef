@@ -19,6 +19,22 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
                 // formData: true
             })
         }),
+        saveRecipe: builder.mutation({
+            query: (recipe) => ({
+                url: `${RECIPES_URL}`,
+                method: 'PUT',
+                body: recipe,
+                // formData: true
+            })
+        }),
+        getSavedRecipes: builder.mutation({
+            query: () => ({
+                url: `${RECIPES_URL}/savedRecipes`,
+                method: 'GET',
+            })
+            // query: () => `${RECIPES_URL}`,
+            // providesTags: ['Recipe']
+        }),
         deleteRecipe: builder.mutation({
             query: (id) => ({
                 url: `${RECIPES_URL}/${id}`,
@@ -38,6 +54,8 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
 export const { 
     useGetRecipesMutation,
     useAddRecipeMutation,
+    useSaveRecipeMutation,
+    useGetSavedRecipesMutation,
     useDeleteRecipeMutation,
     useUpdateRecipeMutation
  } = recipesApiSlice;
