@@ -33,17 +33,23 @@ const addRecipe = asyncHandler(async (req, res) => {
     
 });
 
+// @desc    Save a recipe
+// route    PUT /api/recipes
+// @access  Private
 const saveRecipe = asyncHandler(async (req, res) => {
 
     try {
+        console.log(req.body.recipeID)
         const recipe = await Recipe.findById(req.body.recipeID);
         const user = await User.findById(req.user.id);
 
-        user.savedRecipes.push(recipe);
-        await user.save();
-
+        if (!user.savedRecipes.includes(req.body.recipeID)) {
+            user.savedRecipes.push(recipe);
+            await user.save();
+        }
         res.status(200).json({ savedRecipes: user.savedRecipes });
     } catch (error) {
+        res.status(400);
         res.json(error);
     }
 });
@@ -63,14 +69,15 @@ const getRecipes = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get specific user saved recipes
-// route    GET /api/savedRecipes/ids
+// route    GET /api/recipes/savedRecipes
 // @access  Private
 const getSavedRecipes = asyncHandler(async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
         res.status(200).json({ savedRecipes: user?.savedRecipes });
     } catch (error) {
-        res.json(error);
+        res.status(400);
+        throw new Error('Unable to retrieve user saved recipes')
     }
 });
 
