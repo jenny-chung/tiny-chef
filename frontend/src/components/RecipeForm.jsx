@@ -28,7 +28,7 @@ const RecipeForm = () => {
             const res = await addRecipe(recipe).unwrap();
             console.log("Result", res);
             toast.success('Recipe added!');
-            // navigate('/recipes')
+            navigate('/recipes')
         } catch (error) {
             toast.error(error?.data?.message || error.error);
         }
@@ -51,7 +51,7 @@ const RecipeForm = () => {
         setRecipe({...recipe, ingredients: [...recipe.ingredients, '']});
     }
 
-    console.log(recipe);
+    // console.log(recipe);
 
 
     return (
