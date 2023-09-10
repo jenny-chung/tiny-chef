@@ -39,18 +39,42 @@ const addRecipe = asyncHandler(async (req, res) => {
 const saveRecipe = asyncHandler(async (req, res) => {
 
     try {
-        console.log(req.body.recipeID)
         const recipe = await Recipe.findById(req.body.recipeID);
+        console.log("Recipe Saved: ", recipe);
         const user = await User.findById(req.user.id);
 
-        if (!user.savedRecipes.includes(req.body.recipeID)) {
+        // Only save recipe if not already in user's list of saved recipes
+        if (!user.savedRecipes.includes(recipe._id)) {
             user.savedRecipes.push(recipe);
             await user.save();
         }
         res.status(200).json({ savedRecipes: user.savedRecipes });
     } catch (error) {
         res.status(400);
-        res.json(error);
+        throw new Error('Bad request. Failed to save recipe.')
+    }
+});
+
+// @desc    Unsave a recipe
+// route    PUT /api/recipes/savedRecipes
+// @access  Private
+const unsaveRecipe = asyncHandler(async (req, res) => {
+
+    try {
+        console.log(req.body.recipeID)
+        const recipe = await Recipe.findById(req.body.recipeID);
+        const user = await User.findById(req.user.id);
+        
+        const index = user.savedRecipes.indexOf(recipe._id);
+
+        if (index > -1) {
+            user.savedRecipes.splice(index, 1);
+            await user.save();
+        }
+        res.status(200).json({ savedRecipes: user.savedRecipes });
+    } catch (error) {
+        res.status(400);
+        throw new Error('Bad request. Failed to remove recipe from saves.')
     }
 });
 
@@ -59,8 +83,8 @@ const saveRecipe = asyncHandler(async (req, res) => {
 // @access  Private
 const getRecipes = asyncHandler(async (req, res) => {
     try {
-        console.log(req.user.id);
         const recipes = await Recipe.find({ user: { $all: [req.user.id] } });
+        // const recipes = await Recipe.find({ name: { $regex: SearchBar, $options: 'i'} });
         res.status(200).json(recipes);
     } catch (error) {
         res.status(400);
@@ -145,6 +169,7 @@ const deleteRecipe = asyncHandler(async (req, res) => {
 export {
     addRecipe,
     saveRecipe,
+    unsaveRecipe,
     getRecipes,
     getSavedRecipes,
     updateRecipe,
