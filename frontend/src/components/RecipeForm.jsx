@@ -28,7 +28,7 @@ const RecipeForm = () => {
             const res = await addRecipe(recipe).unwrap();
             console.log("Result", res);
             toast.success('Recipe added!');
-            navigate('/recipes')
+            navigate('/')
         } catch (error) {
             toast.error(error?.data?.message || error.error);
         }
@@ -70,7 +70,7 @@ const RecipeForm = () => {
             </Form.Group>
             <Form.Group className='my-2' controlId='ingredients'>
                 <Form.Label>Ingredients:</Form.Label>
-                <Button onClick={addIngredient} type='button' variant='secondary' className='m-3'>
+                <Button onClick={addIngredient} type='button' variant='outline-secondary' className='m-3'>
                     Add ingredient
                 </Button>
                 {recipe.ingredients.map((ingredient, index) => (
