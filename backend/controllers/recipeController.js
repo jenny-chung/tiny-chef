@@ -7,7 +7,7 @@ import User from '../models/userModel.js';
 // @access  Private
 const addRecipe = asyncHandler(async (req, res) => {
 
-    console.log(req.body);
+    // console.log(req.body);
 
     if (!req.body.name || !req.body.ingredients || !req.body.imageUrl) {
         res.status(400);
@@ -78,7 +78,7 @@ const unsaveRecipe = asyncHandler(async (req, res) => {
     }
 });
 
-// @desc    Get specific user recipes
+// @desc    Get all specific user recipes
 // route    GET /api/recipes
 // @access  Private
 const getRecipes = asyncHandler(async (req, res) => {
@@ -92,10 +92,40 @@ const getRecipes = asyncHandler(async (req, res) => {
     }
 });
 
+// @desc    Get a specific user recipe
+// route    GET /api/recipes/:id
+// @access  Private
+const getRecipe = asyncHandler(async (req, res) => {
+    try {
+        const recipe = await Recipe.findById(req.params.id);
+        res.status(200).json(recipe);
+    } catch (error) {
+        res.status(400);
+        console.log(error);
+        throw new Error('Unable to retrieve recipe by ID');
+    }
+});
+
 // @desc    Get specific user saved recipes
 // route    GET /api/recipes/savedRecipes
 // @access  Private
 const getSavedRecipes = asyncHandler(async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        const savedRecipes = await Recipe.find({
+            _id: { $in: user.savedRecipes},
+        });
+        res.status(200).json({ savedRecipes });
+    } catch (error) {
+        res.status(400);
+        throw new Error('Unable to retrieve user saved recipes')
+    }
+});
+
+// @desc    Get ids of specific user saved recipes
+// route    GET /api/recipes/savedRecipes/ids
+// @access  Private
+const getSavedRecipesIds = asyncHandler(async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
         res.status(200).json({ savedRecipes: user?.savedRecipes });
@@ -127,7 +157,7 @@ const updateRecipe = asyncHandler(async (req, res) => {
             res.status(401);
             throw new Error('User not authorized!');
         }
-
+        console.log(req.body);
         const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
         });
@@ -159,9 +189,10 @@ const deleteRecipe = asyncHandler(async (req, res) => {
             res.status(401);
             throw new Error('User not authorized!');
         }
-        // await Recipe.findByIdAndRemove(req.params.id);
-        await recipe.deleteOne();
-        res.status(200).json( { message: `Recipe ${req.params.id} deleted` });
+        
+        const del = await recipe.deleteOne();
+        console.log("Delete API", del);
+        res.status(200).json( {  message: `Recipe ${req.params.id} deleted` });
     }
     
 });
@@ -171,7 +202,9 @@ export {
     saveRecipe,
     unsaveRecipe,
     getRecipes,
+    getRecipe,
     getSavedRecipes,
+    getSavedRecipesIds,
     updateRecipe,
     deleteRecipe
 };
