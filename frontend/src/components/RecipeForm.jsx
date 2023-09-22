@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import FormContainer from '../components/FormContainer';
@@ -17,7 +16,6 @@ const RecipeForm = () => {
         timeRequired: 0,
     });
 
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const [addRecipe, { isLoading }] = useAddRecipeMutation();
@@ -120,12 +118,6 @@ const RecipeForm = () => {
         <Button type='submit' variant='primary' className='mt-3'>
             Add recipe
         </Button>
-
-        {/* <Row className='py-3'>
-            <Col>
-                New user?
-            </Col>
-        </Row> */}
         
         </Form>
     </FormContainer>
