@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container, NavDropdown, Badge } from 'react-bootstrap';
-import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaUser, FaBookmark } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector, useDispatch } from 'react-redux';
 // import { useNavigate } from 'react-router-dom';
@@ -50,9 +50,14 @@ const Header = () => {
                         <Nav.Link>Home</Nav.Link>
                       </LinkContainer>
                       <LinkContainer to='/recipes'>
-                         <Nav.Link>My Recipes</Nav.Link>
+                         <Nav.Link>Create Recipe</Nav.Link>
                       </LinkContainer>
                       <NavDropdown title={userInfo.name} id='username'>
+                        <LinkContainer to='/myRecipes'>
+                          <NavDropdown.Item>
+                            <FaBookmark /> My Recipes
+                          </NavDropdown.Item>
+                        </LinkContainer>
                         <LinkContainer to='/profile'>
                           <NavDropdown.Item>
                             <FaUser /> Profile
