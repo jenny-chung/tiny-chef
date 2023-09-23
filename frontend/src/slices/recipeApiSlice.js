@@ -17,7 +17,8 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: recipe,
                 // formData: true
-            })
+            }),
+            invalidatesTags: ['Recipe']
         }),
         saveRecipe: builder.mutation({
             query: (recipe) => ({
@@ -55,15 +56,18 @@ export const recipesApiSlice = apiSlice.injectEndpoints({
             query: (id) => ({
                 url: `${RECIPES_URL}/${id}`,
                 method: 'DELETE',
-            })
-        }),
-        updateRecipe: builder.mutation({
-            query: ({id, recipe}) => ({
-                url: `${RECIPES_URL}/${id}`,
-                method: 'PUT',
-                body: recipe
+                credentials: 'include',
             }),
             invalidatesTags: ['Recipe']
+        }),
+        updateRecipe: builder.mutation({
+            query: ({ id, recipe }) => ({
+                url: `${RECIPES_URL}/${id}`,
+                method: 'PUT',
+                credentials: 'include',
+                body: recipe
+            }),
+            invalidatesTags: (result, error, { id }) => [{ type: 'Recipe', id }],
         }),
         getRecipe: builder.query({
             query: (id) => ({
