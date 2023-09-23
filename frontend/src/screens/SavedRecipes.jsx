@@ -39,7 +39,7 @@ const SavedRecipes = () => {
       <div className='d-flex justify-content-center py-4'>
         <h2>{userInfo && userInfo.name}'s Recipes</h2>
         <LinkContainer to='/recipes'>
-          <Button variant='outline-primary' className='mx-3 px-3'><FaPlus size={18}/></Button>
+          <Button variant='primary-outline' className='mx-3 px-3'><FaPlus size={18}/></Button>
         </LinkContainer>
       </div>
      

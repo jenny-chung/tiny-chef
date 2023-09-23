@@ -33,12 +33,12 @@ const Hero = () => {
             ) : (
               <>
               <LinkContainer to='/login'>
-                <Button variant='primary' className='me-3'>
+                <Button variant='customPrimary' className='me-3'>
                     Log In
                 </Button>
               </LinkContainer>
               <LinkContainer to='/register'>
-                <Button variant='secondary'>
+                <Button variant='customSecondary'>
                     Register
                 </Button>
               </LinkContainer>

@@ -9,9 +9,100 @@ i:hover {
 }
 
 .registerPwd {
-    top: 300px;
+    top: 295px;
 }
 
 .registerConfirmPwd {
-    top: 380px;
+    top: 375px;
 }
+
+.card {
+    padding: 38px;
+    margin-top: 50px;
+    height: 100%;
+}
+
+.saveBtn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+}
+
+.rc-card:hover{
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
+    transition: 0.3s ease-in;
+    cursor: pointer;
+}
+
+.card-img {
+    max-width: 300px;
+    max-height: 440px;
+}
+
+div.dropdown-menu.show {
+    background-color: #63458A; 
+}
+
+a.dropdown-item.active {
+    background-color: #63458A !important; 
+}
+
+.btn-customPrimary {
+    background-color: #7E5A9B !important;
+    color: #fff !important;
+}
+
+.btn-customPrimary:hover {
+    background-color: #63458A !important;
+}
+
+.btn-customSecondary {
+    background-color: #4D6A6D !important;
+    color: #fff !important;
+}
+
+.btn-customSecondary:hover {
+    background-color: #343a2d !important;
+    color: #fff !important;
+}
+
+.btn-customDanger {
+    background-color: #6F5E5C !important;
+    color: #fff !important;
+}
+
+.btn-customDanger:hover {
+    background-color: #554746 !important;
+    color: #fff !important;
+}
+
+.btn-primary-outline {
+	/* color: #c79bb7 !important; */
+    color: #7E5A9B !important;
+	border-color: #c79bb7 !important;
+}
+
+.btn-primary-outline:hover {
+    color: #FFF !important;
+	/* background-color: #a776d6 !important; */
+    background-color: #7E5A9B !important;
+}
+
+.btn-customInfo {
+    background-color: #80B192 !important;
+    color: #fff !important;
+}
+
+.btn-customInfo:hover {
+    background-color: #60886f !important;
+    color: #fff !important;
+}
+
+.header {
+    background-color: #bbc0ed;
+}
+/* 
+.card-title {
+    flex-grow: 1;
+} */

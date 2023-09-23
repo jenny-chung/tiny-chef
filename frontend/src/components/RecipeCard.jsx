@@ -90,14 +90,14 @@ const RecipeCard = ({ content, handleDelete, handleUpdate, isHome }) => {
       <CardGroup>
       <Card className="rc-card d-flex flex-column text-center">
         <Card.Img variant="top" onClick={() => handleCardClick(content._id)} src={content.imageUrl} alt={content.name} />
-        {isHome && <i className='saveBtn' title={isRecipeSaved(content._id) ? 'Unsave recipe' : 'Save recipe'} onClick={() => handleSaveRecipe(content._id)}>{isRecipeSaved(content._id) ? <FaBookmark color='lightblue' size={25} /> : <FaRegBookmark color='lightgrey' size={25}/>}</i>}
+        {isHome && <i className='saveBtn' title={isRecipeSaved(content._id) ? 'Unsave recipe' : 'Save recipe'} onClick={() => handleSaveRecipe(content._id)}>{isRecipeSaved(content._id) ? <FaBookmark color='#ADA8BE' size={25} /> : <FaRegBookmark color='lightgrey' size={25}/>}</i>}
         <Card.Body className="d-flex flex-column justify-content-end align-items-center">
           <Card.Title>{content.name}</Card.Title>
           <Card.Text>Time Required: {content.timeRequired ? timeToHoursAndMinutes(content.timeRequired) : '---'}</Card.Text>
         <Card.Body className="d-flex flex-row justify-content-end align-items-center">
-          {isHome && <Button onClick={() => handleShowUpdate()} variant="warning">Edit</Button>}
+          {isHome && <Button variant='customPrimary' onClick={() => handleShowUpdate()}>Edit</Button>}
           <UpdateModal id={content._id} show={showUpdate} handleClose={handleCloseUpdate} handleUpdate={handleUpdate} />
-          {isHome && <Button className='mx-2' onClick={() => handleShow()} variant="danger">Delete</Button>}
+          {isHome && <Button className='mx-2' onClick={() => handleShow()} variant="customDanger">Delete</Button>}
           <DeleteConfirm show={show} handleClose={handleClose} recipeId={content._id} handleDelete={handleDelete}/>
         </Card.Body>  
           

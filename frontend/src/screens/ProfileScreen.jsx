@@ -91,7 +91,7 @@ const ProfileScreen = () => {
 
             {isLoading && <Loader /> && toast.dismiss()}    
             
-            <Button type='submit' variant='primary' className='mt-3'>
+            <Button type='submit' variant='customPrimary' className='mt-3'>
                 Update
             </Button>
             

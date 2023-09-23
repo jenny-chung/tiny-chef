@@ -107,10 +107,10 @@ function UpdateModal({ id, show, handleClose, handleUpdate }) {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="customSecondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSaveChanges}>
+          <Button variant="customPrimary" onClick={handleSaveChanges}>
             Save Changes
           </Button>
         </Modal.Footer>

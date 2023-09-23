@@ -124,10 +124,10 @@ const UpdateRecipe = ({ }) => {
         
         
         <Col>
-            <Button type='submit' variant='primary' className='mt-3'>
+            <Button type='submit' variant='customPrimary' className='mt-3'>
             Update recipe
         </Button>
-        <Button onClick={() => handleView(recipe._id)} variant='info' className='mt-3 mx-3'>
+        <Button onClick={() => handleView(recipe._id)} variant='customInfo' className='mt-3 mx-3'>
             View recipe
         </Button>
         </Col>

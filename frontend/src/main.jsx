@@ -16,7 +16,10 @@ import store from './store.js';
 import { Provider } from 'react-redux';
 import ProfileScreen from './screens/ProfileScreen.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
-import DashboardScreen from './screens/DashboardScreen.jsx';
+import RecipeForm from './components/RecipeForm.jsx';
+import UpdateRecipe from './components/UpdateRecipe.jsx';
+import RecipeDisplay from './screens/RecipeDisplay.jsx';
+import SavedRecipes from './screens/SavedRecipes.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -27,7 +30,10 @@ const router = createBrowserRouter(
       {/* Private Routes */}
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
-        <Route path='/recipes' element={<DashboardScreen />} />
+        <Route path='/recipes' element={<RecipeForm />} />
+        <Route path='/recipes/:id' element={<RecipeDisplay />} />
+        <Route path='/updateRecipe/:id' element={<UpdateRecipe />} />
+        <Route path='/myRecipes' element={<SavedRecipes />} />
       </Route>
     </Route>
   )

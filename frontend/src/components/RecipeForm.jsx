@@ -49,9 +49,6 @@ const RecipeForm = () => {
         setRecipe({...recipe, ingredients: [...recipe.ingredients, '']});
     }
 
-    // console.log(recipe);
-
-
     return (
         <FormContainer>
         <h2>Create Recipe</h2>
@@ -115,7 +112,7 @@ const RecipeForm = () => {
                     onChange={handleChange} />
             </Form.Group>
         
-        <Button type='submit' variant='primary' className='mt-3'>
+        <Button type='submit' variant='customPrimary' className='mt-3'>
             Add recipe
         </Button>
         
