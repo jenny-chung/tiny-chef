@@ -32,7 +32,7 @@ const RecipeDisplay = () => {
       <Card.Subtitle>Total Time: {recipe.timeRequired ? timeToHoursAndMinutes(recipe.timeRequired) : '---'}</Card.Subtitle>
       <Button className='position-absolute top-0 end-0 m-3' variant='primary-outline' onClick={() => handleEdit(recipe._id)}><FaPen /></Button>
       {/* <UpdateModal show={show} handleClose={handleClose}/> */}
-      <div className='d-flex flex-row my-4'>
+      <div className='recipeContainer d-flex flex-row my-4'>
             <Card.Img src={recipe.imageUrl} alt={recipe.name}></Card.Img>
       <Card.Body>
         <Card.Title>Ingredients</Card.Title>
