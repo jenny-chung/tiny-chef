@@ -24,7 +24,7 @@ const ProfileScreen = () => {
     useEffect(() => {
         setName(userInfo.name);
         setEmail(userInfo.email);
-    }, [userInfo.setName, userInfo.sestEmail]);
+    }, [userInfo.setName, userInfo.setEmail]);
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -83,7 +83,7 @@ const ProfileScreen = () => {
                     <Form.Label>Confirm password</Form.Label>
                     <Form.Control
                         type='password'
-                        placeholder='Confirm your password'
+                        placeholder='Confirm your updated password'
                         value={confirmPassword}
                         onChange={ (e) => setConfirmPassword(e.target.value) }>
                     </Form.Control>
