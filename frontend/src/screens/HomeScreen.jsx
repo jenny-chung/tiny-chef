@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 import Hero from '../components/Hero';
-import RecipeForm from '../components/RecipeForm';
+import Recipes from './Recipes';
 import { useSelector } from 'react-redux';
 
 const HomeScreen = () => {
-  
-  const { userInfo } = useSelector((state) => state.auth);
-  console.log("User info", userInfo);
+    const { userInfo } = useSelector((state) => state.auth);
+    console.log("User info", userInfo);
 
   return (
     <div>
-        {userInfo ? <RecipeForm /> : <Hero /> }
+        {userInfo ? <Recipes /> : <Hero />}
     </div>
-  );
-};
+   
+  )
+}
 
 export default HomeScreen;
