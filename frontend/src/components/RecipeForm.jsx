@@ -49,9 +49,6 @@ const RecipeForm = () => {
         setRecipe({...recipe, ingredients: [...recipe.ingredients, '']});
     }
 
-    // console.log(recipe);
-
-
     return (
         <FormContainer>
         <h2>Create Recipe</h2>
