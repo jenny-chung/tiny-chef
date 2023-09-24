@@ -6,5 +6,11 @@
 ![Hero Screen](./frontend/assets/Hero.png "Hero")
 ### Register as a new user
 ![Registration Screen](./frontend/assets/Register.png "Register as new user")
-### Login with credentials
-![Login Screen](./frontend/assets/Login.png "Login to app")
+### Login with your credentials
+![Login Screen](./frontend/assets/Login.png "Login to application")
+### Update a recipe
+![Update recipe modal](./frontend/assets/UpdateRecipeModal.png "Update recipe")
+### Save your favourite recipes
+![Saved Recipes Page](./frontend/assets/SavedRecipes.png "Saved recipes")
+### Search for your recipes
+![Home Page](./frontend/assets/Home.png "Home page")
