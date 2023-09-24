@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { 
-  createHashRouter,
+  createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider
@@ -21,7 +21,7 @@ import UpdateRecipe from './components/UpdateRecipe.jsx';
 import RecipeDisplay from './screens/RecipeDisplay.jsx';
 import SavedRecipes from './screens/SavedRecipes.jsx';
 
-const router = createHashRouter(
+const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
