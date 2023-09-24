@@ -59,6 +59,7 @@ const RecipeForm = () => {
                     type='text' 
                     placeholder='Enter recipe name'
                     name='name'
+                    autoFocus
                     value={recipe.name}
                     onChange={handleChange}>
                 </Form.Control>

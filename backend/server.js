@@ -23,6 +23,7 @@ app.use(cookieParser());
 app.use('/api/users', userRoutes);
 app.use('/api/recipes', recipeRoutes);
 
+// Serve frontend
 if (process.env.NODE_ENV === 'production') {
     const __dirname = path.resolve();
     // Make dist folder a static folder
