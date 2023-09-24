@@ -34,7 +34,7 @@ const Header = () => {
         <Container>
             <LinkContainer to='/'>
                 <Navbar.Brand>
-                  <img src='../assets/baker.png' alt=' ' loading='lazy' 
+                  <img src='./baker.png' alt=' ' loading='lazy' 
                     width="30"
                     height="30"
                     className="d-inline-block align-top"/>{' '}
