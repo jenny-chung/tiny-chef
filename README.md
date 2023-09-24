@@ -13,4 +13,4 @@
 ### Save your favourite recipes
 ![Saved Recipes Page](./frontend/assets/SavedRecipes.png "Saved recipes")
 ### Search for your recipes
-![Home Page](./frontend/assets/Home.png "Home page")
+![Home Page](./frontend/assets/SearchRecipe.png "Search for tiramisu recipes")
