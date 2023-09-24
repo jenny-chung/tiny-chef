@@ -11,7 +11,7 @@ const Hero = () => {
       <Container className='d-flex justify-content-center'>
         <Card className='p-5 d-flex flex-column align-items-center hero-card bg-light w-75'>
           <img 
-            src='../assets/baker.png'
+            src='./baker.png'
             alt=' '
             loading='lazy' 
             width="30"
