@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import recipeRoutes from './routes/recipeRoutes.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
@@ -19,6 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
+
+const corsOptions = {
+    origin: "https://tiny-chef-front.onrender.com/",
+}
+app.use(cors(corsOptions));
 
 app.use('/api/users', userRoutes);
 app.use('/api/recipes', recipeRoutes);
