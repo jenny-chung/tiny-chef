@@ -31,14 +31,14 @@ app.use('/api/recipes', recipeRoutes);
 
 // Serve frontend
 if (process.env.NODE_ENV === 'production') {
-
+    const __dirname = path.resolve();
     // Serve static files from the 'frontend/dist' directory
-    app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+    app.use(express.static('frontend/dist'));
 
     // Serve the React app's index.html for all other requests
-    app.get('*', (req, res) => {res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+    app.get('*', (req, res) => {res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
 });
-    // const __dirname = path.resolve();
+    
     
     // // Make dist folder a static folder
     // app.use(express.static(path.join(__dirname, 'frontend/dist')));
